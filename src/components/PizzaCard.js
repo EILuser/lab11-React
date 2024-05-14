@@ -1,5 +1,4 @@
 import {React, useState} from "react";
-import pizzaImage from "../images/pizza.jpg";
 
 function PizzaCard(props) {
     const [counter, setCounter] = useState(0);
@@ -9,7 +8,7 @@ function PizzaCard(props) {
     }
 
     function decrement() {
-        setCounter(prevCounter => prevCounter - 1)
+        setCounter(prevCounter => prevCounter - 1);
     }
 
     function submitButtonOnClick(event) {
@@ -31,7 +30,8 @@ function PizzaCard(props) {
 
     return (
         <div className="card__wrapper">
-            <img src={pizzaImage} alt="Пицца" className="card__image"/>
+            <div className="caption">Хит сезона</div>
+            <img src={props.image} alt="Пицца" className="card__image"/>
             <h2 className="card__title">{props.title}</h2>
             <p className="card__text">{props.text}</p>
             <select id="pizza_diam" className="card__pizza__diameter" defaultValue="Диаметр" form="form">
@@ -42,7 +42,7 @@ function PizzaCard(props) {
             <p className="card__pizza__price">от {props.price}</p>
             <form id="form" action="#" method="post" className="card__input__wrapper">
                 <input type="button" value="-" className="card__input__decrement" onClick={decrement}/>
-                <input id="quantity" type="text" value={counter} className="card__input__quantity"/>
+                <input id="quantity" type="text" value={counter} className="card__input__quantity" readOnly/>
                 <input type="button" value="+" className="card__input__increment" onClick={increment}/>
                 <input type="submit" className="card__order__button" value=" " onClick={submitButtonOnClick}/>
             </form>
